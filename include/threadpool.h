@@ -2,8 +2,10 @@
 #define _THREADPOOL_H
 
 #include <atomic>
+#include <condition_variable>
 #include <functional>
 #include <memory>
+#include <mutex>
 #include <queue>
 #include <thread>
 #include <vector>
@@ -73,6 +75,11 @@ private:
     std::queue<std::shared_ptr<Task>> taskQue_;
     std::atomic_int taskSize_;
     int taskQueMaxThreshHold_;
+
+    std::mutex taskQueMtx_;
+    std::condition_variable notFull_;
+    std::condition_variable notEmpty_;
+    std::condition_variable exitCond_;
 
     PoolMode poolMode_;
     std::atomic_bool isPoolRunning_;
