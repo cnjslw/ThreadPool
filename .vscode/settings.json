@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "functional": "cpp",
+        "vector": "cpp",
+        "thread": "cpp",
+        "*.tcc": "cpp",
+        "atomic": "cpp",
+        "optional": "cpp"
+    }
+}
